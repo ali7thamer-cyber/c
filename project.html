@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة صناعة التقارير والعروض التقديمية</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+
+    <div class="slider-container">
+        <div class="slider-bg"></div>
+        <div class="slider-text">
+            <h1>منصتنا الذكية للخدمات الطلابية والأكاديمية</h1>
+            <p>نساعدك في إعداد أرقى التقارير الأكاديمية والعروض التقديمية (Presentations) باحترافية عالية وخلال وقت
+                قياسي. اختر خدمتك الآن ودع الباقي علينا.</p>
+        </div>
+    </div>
+
+    <div class="main-container">
+
+<div class="tabs-buttons">
+            <button class="tab-btn" onclick="openTab('report-section')">عمل تقارير</button>
+            <button class="tab-btn" onclick="openTab('preset-section')">عمل عرض Presentation</button>
+        </div>
+
+        <form id="report-section" class="form-section" onsubmit="handleFormSubmit(event, 'تقرير', 150)">
+            <h2>طلب إعداد تقرير أكاديمي</h2>
+            <div class="grid-fields">
+                <div class="form-group">
+                    <label>اسم الطالب الثلاثي</label>
+                    <input type="text" required id="rep-name">
+                </div>
+                <div class="form-group">
+                    <label>اسم الجامعة</label>
+                    <input type="text" required id="rep-uni">
+                </div>
+                <div class="form-group">
+                    <label>الكلية</label>
+                    <input type="text" required id="rep-coll">
+                </div>
+                <div class="form-group">
+                    <label>القسم</label>
+                    <input type="text" required id="rep-dept">
+                </div>
+                <div class="form-group">
+                    <label>المرحلة</label>
+                    <select required id="rep-stage">
+                        <option value="الأولى">الأولى</option>
+                        <option value="الثانية">الثانية</option>
+                        <option value="الثالثة">الثالثة</option>
+                        <option value="الرابعة">الرابعة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الدراسة</label>
+                    <select required id="rep-study">
+                        <option value="صباحي">صباحي</option>
+                        <option value="مسائي">مسائي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>اسم التقرير</label>
+                    <input type="text" required id="rep-title">
+                </div>
+                <div class="form-group">
+                    <label>اللغة المراد كتابة التقرير بها</label>
+                    <select required id="rep-lang">
+                        <option value="العربية">العربية</option>
+                        <option value="الإنجليزية">الإنجليزية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>عدد الصفحات المطلوبة</label>
+                    <input type="number" min="1" required id="rep-pages"
+                        oninput="calculatePrice('rep-pages', 'rep-price', 150)">
+                </div>
+                <div class="form-group">
+                    <label>اسم المادة</label>
+                    <input type="text" required id="rep-subject">
+                </div>
+                <div class="form-group">
+                    <label>اسم الدكتور / الأستاذ</label>
+                    <input type="text" required id="rep-doc">
+                </div>
+            </div>
+
+            <button type="button" class="btn-next"
+                onclick="showPayment('report-section', 'rep-pages', 'rep-price', 150)">التالي</button>
+           <div class="payment-section" id="report-section-pay">
+                <div class="price-box">إجمالي التكلفة: <span id="rep-price">0</span> دينار عراقي</div>
+                <div style="background: #2d3436; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-right: 4px solid #00adb5;">
+                    <p style="margin: 0 0 8px 0; font-weight: bold; color: #fff;">💡 طريقة الدفع المباشر:</p>
+                    <p style="margin: 0; font-size: 0.95rem; color: #ccc;">يرجى تحويل المبلغ أعلاه إلى محفظة زين كاش التالية: <strong style="color: #00adb5;" id="rep-zain-num"></strong>، ثم اضغط على الزر بالأسفل لتأكيد الطلب وإرسال صورة الوصل.</p>
+                </div>
+                <button type="submit" class="btn-submit">تأكيد وإرسال عبر الواتساب</button>
+            </div>
+        </form>
+
+        <form id="preset-section" class="form-section" onsubmit="handleFormSubmit(event, 'عرض تقديمي', 250)">
+            <h2>طلب إعداد عرض تقديمي (Presentation)</h2>
+            <div class="grid-fields">
+                <div class="form-group">
+                    <label>اسم الطالب الثلاثي</label>
+                    <input type="text" required id="pre-name">
+                </div>
+                <div class="form-group">
+                    <label>اسم الجامعة</label>
+                    <input type="text" required id="pre-uni">
+                </div>
+                <div class="form-group">
+                    <label>الكلية</label>
+                    <input type="text" required id="pre-coll">
+                </div>
+                <div class="form-group">
+                    <label>القسم</label>
+                    <input type="text" required id="pre-dept">
+                </div>
+                <div class="form-group">
+                    <label>المرحلة</label>
+                    <select required id="pre-stage">
+                        <option value="الأولى">الأولى</option>
+                        <option value="الثانية">الثانية</option>
+                        <option value="الثالثة">الثالثة</option>
+                        <option value="الرابعة">الرابعة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الدراسة</label>
+                    <select required id="pre-study">
+                        <option value="صباحي">صباحي</option>
+                        <option value="مسائي">مسائي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>اسم العرض</label>
+                    <input type="text" required id="pre-title">
+                </div>
+                <div class="form-group">
+                    <label>اللغة المراد كتابة العرض بها</label>
+                    <select required id="pre-lang">
+                        <option value="العربية">العربية</option>
+                        <option value="الإنجليزية">الإنجليزية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>عدد الصفحات (الشرائح) المطلوبة</label>
+                    <input type="number" min="1" required id="pre-pages"
+                        oninput="calculatePrice('pre-pages', 'pre-price', 250)">
+                </div>
+                <div class="form-group">
+                    <label>هل أضيف حركة (Animation) على العمل؟</label>
+                    <select required id="pre-animation">
+                        <option value="نعم">نعم، مع حركات انتقالية</option>
+                        <option value="لا">لا، تصميم ثابت ومحترف</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>اسم المادة</label>
+                    <input type="text" required id="pre-subject">
+                </div>
+                <div class="form-group">
+                    <label>اسم الدكتور / الأستاذ</label>
+                    <input type="text" required id="pre-doc">
+                </div>
+            </div>
+
+            <button type="button" class="btn-next"
+                onclick="showPayment('preset-section', 'pre-pages', 'pre-price', 250)">التالي</button>
+
+             <div class="payment-section" id="preset-section-pay">
+                <div class="price-box">إجمالي التكلفة: <span id="pre-price">0</span> دينار عراقي</div>
+                <div style="background: #2d3436; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-right: 4px solid #00adb5;">
+                    <p style="margin: 0 0 8px 0; font-weight: bold; color: #fff;">💡 طريقة الدفع المباشر:</p>
+                    <p style="margin: 0; font-size: 0.95rem; color: #ccc;">يرجى تحويل المبلغ أعلاه إلى محفظة زين كاش التالية: <strong style="color: #00adb5;" id="pre-zain-num"></strong>، ثم اضغط على الزر بالأسفل لتأكيد الطلب وإرسال صورة الوصل.</p>
+                </div>
+                <button type="submit" class="btn-submit">تأكيد وإرسال عبر الواتساب</button>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="project.js"></script>
+</body>
+
+</html>
